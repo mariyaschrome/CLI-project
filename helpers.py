@@ -22,3 +22,19 @@ def list_enrollments():
     enrollments = Enrollment.all()
     for enrollment in enrollments:
         print(f"Enrollment ID: {enrollment['id']}, Student: {enrollment['student_name']}, Course: {enrollment['course_name']}, Instructor: {enrollment['instructor_name']}")
+
+def add_student():
+    name = input("Enter student name: ")
+    age = int(input("Enter student age: "))
+    course_name = input("Enter course name: ")
+    instructor_name = input("Enter instructor name: ")
+    student = Student(name, age, course_name, instructor_name)
+    student.save()
+    print(f"Student {name} added.")
+
+def add_course():
+    name = input("Enter course name: ")
+    description = input("Enter course description: ")
+    course = Course(name, description)
+    course.save()
+    print(f"Course {name} added.")

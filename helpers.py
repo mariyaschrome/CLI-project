@@ -45,3 +45,11 @@ def add_instructor():
     instructor = Instructor(name, course_id)
     instructor.save()
     print(f"Instructor {name} added.")
+
+def enroll_student():
+    student_name = input("Enter student name: ")
+    course_name = input("Enter course name: ")
+    instructor_name = input("Enter instructor name: ")  
+    enrollment = Enrollment(student_name, course_name, instructor_name)  
+    enrollment.save()
+    print(f"Student {student_name} enrolled in course {course_name} with instructor {instructor_name}")

@@ -38,3 +38,10 @@ def add_course():
     course = Course(name, description)
     course.save()
     print(f"Course {name} added.")
+
+def add_instructor():
+    name = input("Enter instructor name: ")
+    course_id = int(input("Enter course ID: "))
+    instructor = Instructor(name, course_id)
+    instructor.save()
+    print(f"Instructor {name} added.")

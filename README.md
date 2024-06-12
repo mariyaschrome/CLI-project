@@ -97,6 +97,4 @@ Upon running the application, you will be presented with a menu to perform vario
 
 To exit the application, select option `17` from the menu. The application will display a goodbye message.
 
-## License
 
-This project is licensed under the MIT License.

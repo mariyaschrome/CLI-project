@@ -54,6 +54,15 @@ def enroll_student():
     enrollment.save()
     print(f"Student {student_name} enrolled in course {course_name} with instructor {instructor_name}")
 
+def update_student():
+    student_id = input("Enter student ID: ")
+    name = input("Enter new student name: ")
+    age = input("Enter new student age: ")
+    course_name = input("Enter new course name: ")
+    instructor_name = input("Enter new instructor name: ")
+    Student.update(student_id, name, age, course_name, instructor_name)
+    print(f"Student {student_id} updated.")
+
 def update_course():
     course_id = input("Enter course ID: ")
     name = input("Enter new course name: ")

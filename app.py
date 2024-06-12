@@ -26,8 +26,7 @@ def main():
         14. Delete course
         15. Delete instructor
         16. Delete enrollment
-        17. Clear database
-        18. Exit
+        17. Exit
         """)
         choice = input("Enter your choice: ")
         if choice == '1':
@@ -63,9 +62,6 @@ def main():
         elif choice == '16':
             delete_enrollment()
         elif choice == '17':
-            clear_database()
-            print("Database cleared.")
-        elif choice == '18':
             print("Goodbye, thanks for using us!")
             break
         else:

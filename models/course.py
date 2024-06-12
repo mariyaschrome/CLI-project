@@ -40,6 +40,26 @@ class Course:
         conn.close()
 
     @staticmethod
+    def update(course_id, name, description):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('''
+            UPDATE courses 
+            SET name = ?, description = ? 
+            WHERE id = ?
+            ''', (name, description, course_id))
+        conn.commit()
+        conn.close()
+
+    @staticmethod
+    def delete(course_id):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('DELETE FROM courses WHERE id = ?', (course_id,))
+        conn.commit()
+        conn.close()
+
+    @staticmethod
     def all():
         conn = get_db_connection()
         cursor = conn.cursor()

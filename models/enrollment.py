@@ -17,6 +17,27 @@ class Enrollment:
         conn.close()
 
     @staticmethod
+    def update(enrollment_id, course_name, num_students):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('''
+            UPDATE enrollments 
+            SET course_name = ?, num_students = ? 
+            WHERE id = ?
+            ''', (course_name, num_students, enrollment_id))
+        conn.commit()
+        conn.close()
+
+    @staticmethod
+    def delete(enrollment_id):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('DELETE FROM enrollments WHERE id = ?', (enrollment_id,))
+        conn.commit()
+        conn.close()
+
+
+    @staticmethod
     def all():
         conn = get_db_connection()
         cursor = conn.cursor()

@@ -75,3 +75,23 @@ def update_enrollment():
     Enrollment.update(enrollment_id, course_name, num_students)
     print(f"Enrollment {enrollment_id} updated.")
 
+def delete_student():
+    student_id = input("Enter student ID to delete: ")
+    Student.delete(student_id)
+    print(f"Student {student_id} deleted.")
+
+def delete_course():
+    course_id = input("Enter course ID to delete: ")
+    Course.delete(course_id)
+    print(f"Course {course_id} deleted.")
+
+def delete_instructor():
+    instructor_id = input("Enter instructor ID to delete: ")
+    Instructor.delete(instructor_id)
+    print(f"Instructor {instructor_id} deleted.")
+
+def delete_enrollment():
+    enrollment_id = input("Enter enrollment ID to delete: ")
+    Enrollment.delete(enrollment_id)
+    print(f"Enrollment {enrollment_id} deleted.")
+

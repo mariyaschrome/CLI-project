@@ -72,7 +72,7 @@ class Student:
             UPDATE students 
             SET name = ?, age = ?, course_name = ?, instructor_name = ? 
             WHERE id = ?
-            ''', (name, age, course_name, instructor_name, student_id))
+        ''', (name, age, course_name, instructor_name, student_id))
         conn.commit()
         conn.close()
 

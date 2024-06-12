@@ -55,9 +55,9 @@ def enroll_student():
     print(f"Student {student_name} enrolled in course {course_name} with instructor {instructor_name}")
 
 def update_student():
-    student_id = input("Enter student ID: ")
+    student_id = int(input("Enter student ID: "))
     name = input("Enter new student name: ")
-    age = input("Enter new student age: ")
+    age = int(input("Enter new student age: "))
     course_name = input("Enter new course name: ")
     instructor_name = input("Enter new instructor name: ")
     Student.update(student_id, name, age, course_name, instructor_name)
@@ -80,8 +80,7 @@ def update_instructor():
 def update_enrollment():
     enrollment_id = input("Enter enrollment ID: ")
     course_name = input("Enter new course name: ")
-    num_students = input("Enter new number of students: ")
-    Enrollment.update(enrollment_id, course_name, num_students)
+    Enrollment.update(enrollment_id, course_name)
     print(f"Enrollment {enrollment_id} updated.")
 
 def delete_student():

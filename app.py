@@ -3,7 +3,8 @@ from helpers import (
     list_students, list_courses, list_instructors, list_enrollments,
     add_student, add_course, add_instructor, enroll_student,
     update_student, update_course, update_instructor, update_enrollment,
-    delete_student, delete_course, delete_instructor, delete_enrollment
+    delete_student, delete_course, delete_instructor, delete_enrollment,
+    search_students, search_courses, search_instructors, search_enrollments
 )
 
 def main():
@@ -26,7 +27,11 @@ def main():
         14. Delete course
         15. Delete instructor
         16. Delete enrollment
-        17. Exit
+        17. Search students
+        18. Search courses
+        19. Search instructors
+        20. Search enrollments
+        21. Exit
         """)
         choice = input("Enter your choice: ")
         if choice == '1':
@@ -62,6 +67,14 @@ def main():
         elif choice == '16':
             delete_enrollment()
         elif choice == '17':
+            search_students()
+        elif choice == '18':
+            search_courses()
+        elif choice == '19':
+            search_instructors()
+        elif choice == '20':
+            search_enrollments()
+        elif choice == '21':
             print("Goodbye, thanks for using us!")
             break
         else:

@@ -80,7 +80,8 @@ def update_instructor():
 def update_enrollment():
     enrollment_id = input("Enter enrollment ID: ")
     course_name = input("Enter new course name: ")
-    Enrollment.update(enrollment_id, course_name)
+    instructor_name = input("Enter new instructor name: ")
+    Enrollment.update(enrollment_id, course_name, instructor_name)
     print(f"Enrollment {enrollment_id} updated.")
 
 def delete_student():
@@ -102,4 +103,30 @@ def delete_enrollment():
     enrollment_id = input("Enter enrollment ID to delete: ")
     Enrollment.delete(enrollment_id)
     print(f"Enrollment {enrollment_id} deleted.")
+
+def search_students():
+    name = input("Enter student name to search: ")
+    students = Student.search(name)
+    for student in students:
+        print(f"Student ID: {student['id']}, Name: {student['name']}, Age: {student['age']}, Course: {student['course_name']}, Instructor: {student['instructor_name']}")
+
+def search_courses():
+    name = input("Enter course name to search: ")
+    courses = Course.search(name)
+    for course in courses:
+        print(f"Course ID: {course['id']}, Name: {course['name']}, Description: {course['description']}")
+
+def search_instructors():
+    name = input("Enter instructor name to search: ")
+    instructors = Instructor.search(name)
+    for instructor in instructors:
+        print(f"Instructor ID: {instructor['id']}, Name: {instructor['name']}, Course ID: {instructor['course_id']}")
+
+def search_enrollments():
+    student_name = input("Enter student name to search (leave blank if not searching by student name): ")
+    course_name = input("Enter course name to search (leave blank if not searching by course name): ")
+    instructor_name = input("Enter instructor name to search (leave blank if not searching by instructor name): ")
+    enrollments = Enrollment.search(student_name, course_name, instructor_name)
+    for enrollment in enrollments:
+        print(f"Enrollment ID: {enrollment['id']}, Student: {enrollment['student_name']}, Course: {enrollment['course_name']}, Instructor: {enrollment['instructor_name']}")
 

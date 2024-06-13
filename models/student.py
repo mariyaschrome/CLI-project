@@ -93,5 +93,14 @@ class Student:
         conn.close()
         return students
     
+    @staticmethod
+    def search(name):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM students WHERE name LIKE ?', ('%' + name + '%',))
+        students = cursor.fetchall()
+        conn.close()
+        return students
+    
     def __repr__(self):
         return f'<Student {self.name}>'

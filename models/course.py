@@ -68,5 +68,14 @@ class Course:
         conn.close()
         return [dict(course) for course in courses]
     
+    @staticmethod
+    def search(name):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM courses WHERE name LIKE ?', ('%' + name + '%',))
+        courses = cursor.fetchall()
+        conn.close()
+        return courses
+    
     def __repr__(self):
         return f'<Course {self.name}>'

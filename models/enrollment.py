@@ -17,14 +17,14 @@ class Enrollment:
         conn.close()
 
     @staticmethod
-    def update(enrollment_id, course_name, num_students):
+    def update(enrollment_id, course_name, instructor_name):
         conn = get_db_connection()
         cursor = conn.cursor()
         cursor.execute('''
             UPDATE enrollments 
-            SET course_name = ?, num_students = ? 
+            SET course_name = ?, instructor_name = ? 
             WHERE id = ?
-            ''', (course_name, num_students, enrollment_id))
+            ''', (course_name, instructor_name, enrollment_id))
         conn.commit()
         conn.close()
 
@@ -44,10 +44,30 @@ class Enrollment:
         cursor.execute('''
         SELECT e.id, e.student_name, e.course_name, e.instructor_name, s.age, c.description
         FROM enrollments e
-        JOIN students s ON e.student_name = s.name
-        JOIN courses c ON e.course_name = c.name
-        JOIN instructors i ON e.instructor_name = i.name
+        INNER JOIN students s ON e.student_name = s.name
+        INNER JOIN courses c ON e.course_name = c.name
+        INNER JOIN instructors i ON e.instructor_name = i.name
         ''')
+        enrollments = cursor.fetchall()
+        conn.close()
+        return enrollments
+    
+    @staticmethod
+    def search(student_name=None, course_name=None, instructor_name=None):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        query = 'SELECT * FROM enrollments WHERE 1=1'
+        params = []
+        if student_name:
+            query += ' AND student_name LIKE ?'
+            params.append('%' + student_name + '%')
+        if course_name:
+            query += ' AND course_name LIKE ?'
+            params.append('%' + course_name + '%')
+        if instructor_name:
+            query += ' AND instructor_name LIKE ?'
+            params.append('%' + instructor_name + '%')
+        cursor.execute(query, params)
         enrollments = cursor.fetchall()
         conn.close()
         return enrollments
